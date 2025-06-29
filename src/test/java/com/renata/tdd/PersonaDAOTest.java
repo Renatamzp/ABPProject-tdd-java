@@ -9,7 +9,7 @@ public class PersonaDAOTest {
 
     @Test
     void testCrearRegistro() {
-        PersonaDAO dao = new (PersonaDAO());
+        PersonaDAO dao = new PersonaDAO();
         Persona persona = new Persona(1,"Renata", "r@example.com");
 
         boolean resultado = dao.crear(persona);
