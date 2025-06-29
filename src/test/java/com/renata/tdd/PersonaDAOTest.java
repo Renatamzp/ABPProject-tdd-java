@@ -13,6 +13,6 @@ public class PersonaDAOTest {
         Persona persona = new Persona(1,"Renata", "r@example.com");
 
         boolean resultado = dao.crear(persona);
-        assertTrue(resultado, "La persona debería crearse correctamente");
+        assertTrue(resultado, "El registro debería crearse correctamente");
     }
 }
