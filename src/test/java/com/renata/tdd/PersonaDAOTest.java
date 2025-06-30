@@ -2,17 +2,25 @@ package com.renata.tdd;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PersonaDAOTest {
 
 
     @Test
-    void testCrearRegistro() {
+    void testCrearRegistroExitoso() {
         PersonaDAO dao = new PersonaDAO();
         Persona persona = new Persona(1,"Renata", "r@example.com");
+        assertTrue(dao.crear(persona)); //Test pasa si se añade una persona a la lista y retorna TRUE
+    }
 
-        boolean resultado = dao.crear(persona);
-        assertTrue(resultado, "El registro debería crearse correctamente");
+    @Test
+
+    void  testCrearRegistroPersonaNula(){
+        PersonaDAO dao = new PersonaDAO();
+        assertThrows(IllegalArgumentException.class, ()-> dao.crear(null));
+        //Test pasa si metodo maneja nulos y retorna una excepción.
     }
 }
