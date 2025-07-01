@@ -30,7 +30,6 @@
 
     <build>
         <plugins>
-            <!-- Surefire para ejecutar tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -41,8 +40,6 @@
                     </includes>
                 </configuration>
             </plugin>
-
-            <!-- JaCoCo para reportes de cobertura -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
