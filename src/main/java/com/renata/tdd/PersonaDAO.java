@@ -1,7 +1,9 @@
 package com.renata.tdd;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PersonaDAO {
     private final List<Persona> personas = new ArrayList<>();
@@ -42,7 +44,9 @@ public class PersonaDAO {
         return personas.removeIf(p -> p.getId() == id);
     }
 
-    public List<Persona> listar() {
-        return new ArrayList<>();
+    public List<Persona> listar() {   //Devolver lista ordenada, sin modificar la original
+        return personas.stream()
+                .sorted(Comparator.comparingInt(Persona::getId))
+                .collect(Collectors.toList());
     }
 }

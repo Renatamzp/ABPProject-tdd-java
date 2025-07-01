@@ -102,33 +102,28 @@ public class PersonaDAOTest {
         assertThrows(IllegalArgumentException.class, () -> dao.eliminar(0));
     }
 
-/*    // TEST ASOCIADOS A LISTAR
+    // TEST ASOCIADOS A LISTAR
 
     @Test
     void testListarRegistrosVacios() {
-        PersonaDAO dao = new PersonaDAO();
         assertTrue(dao.listar().isEmpty(), "No existen registros");
     }
 
     @Test
     void testListarRegistroExitoso() {
-        PersonaDAO dao = new PersonaDAO();
-        dao.crear(new Persona(1, "Ana", "ana@ejemplo.com"));
+        Persona persona = new Persona(1, "Ana", "ana@ejemplo.com");
         dao.crear(persona);
 
         List<Persona> personas = dao.listar();
         assertEquals(1, personas.size());
-        assertEquals(persona, personas.get(0));
+        assertEquals(persona, personas.get(0)); //Verificar qe la persona lista sea la misma q se creo
     }
 
     @Test
     void testListarRegistrosOrdenadosPorId() {
-        PersonaDAO dao = new PersonaDAO();
-        dao.crear(new Persona(2, "B", "b@ejemplo.com"));
-        dao.crear(new Persona(1, "A", "a@ejemplo.com"));
-        assertEquals(1, dao.listar().get(0).getId());
-    }*/
-
-
+        dao.crear(new Persona(2, "Ana", "Ana@ejemplo.com"));
+        dao.crear(new Persona(1, "Emilia", "Emilia@ejemplo.com"));
+        assertEquals(1, dao.listar().get(0).getId()); //El primero en la lista debe tener ID 1
+    }
 
 }
