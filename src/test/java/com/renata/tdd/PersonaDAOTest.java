@@ -53,7 +53,7 @@ public class PersonaDAOTest {
         Persona persona2 = new Persona(2, "Ana Duplicada", "ana@ejemplo.com");
         assertThrows(IllegalArgumentException.class, () -> dao.crear(persona2));
     }
-/*    // TEST ASOCIADOS A UNA ACTUALIZACIÓN
+    // TEST ASOCIADOS A UNA ACTUALIZACIÓN
 
     @Test  //Precondición: Persona existe
     void testActualizarRegistroExistente(){
@@ -79,7 +79,7 @@ public class PersonaDAOTest {
     }
 
 
-    // TEST ASOCIADOS A ELIMINACIÓN
+    /*// TEST ASOCIADOS A ELIMINACIÓN
 
     @Test   //Precondición: persona existe
     void testEliminarRegistroExistente() {
@@ -127,8 +127,8 @@ public class PersonaDAOTest {
         dao.crear(new Persona(2, "B", "b@ejemplo.com"));
         dao.crear(new Persona(1, "A", "a@ejemplo.com"));
         assertEquals(1, dao.listar().get(0).getId());
-    }*/
-
+    }
+*/
 
 
 }
