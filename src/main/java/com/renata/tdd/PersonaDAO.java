@@ -36,7 +36,10 @@ public class PersonaDAO {
     }
 
     public boolean eliminar(int id) {
-        return false;
+        if (id <= 0) {
+            throw new IllegalArgumentException("ID debe ser mayor que 0");
+        }
+        return personas.removeIf(p -> p.getId() == id);
     }
 
     public List<Persona> listar() {

@@ -79,7 +79,7 @@ public class PersonaDAOTest {
     }
 
 
-    /*// TEST ASOCIADOS A ELIMINACIÓN
+    // TEST ASOCIADOS A ELIMINACIÓN
 
     @Test   //Precondición: persona existe
     void testEliminarRegistroExistente() {
@@ -102,7 +102,7 @@ public class PersonaDAOTest {
         assertThrows(IllegalArgumentException.class, () -> dao.eliminar(0));
     }
 
-    // TEST ASOCIADOS A LISTAR
+/*    // TEST ASOCIADOS A LISTAR
 
     @Test
     void testListarRegistrosVacios() {
@@ -127,8 +127,8 @@ public class PersonaDAOTest {
         dao.crear(new Persona(2, "B", "b@ejemplo.com"));
         dao.crear(new Persona(1, "A", "a@ejemplo.com"));
         assertEquals(1, dao.listar().get(0).getId());
-    }
-*/
+    }*/
+
 
 
 }
