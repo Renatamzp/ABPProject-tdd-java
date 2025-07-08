@@ -12,11 +12,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class PersonaDAOTest {
     private PersonaDAO dao;
+    private PersonaListRepository repository;
 
     @BeforeEach
     void setUp() {
-        dao = new PersonaDAO();
-
+        repository = new PersonaListRepository();
+        dao = new PersonaDAO(repository);
     }
 
     // TEST ASOCIADOS A NUEVO REGISTRO
@@ -57,7 +58,6 @@ public class PersonaDAOTest {
 
     @Test  //Precondición: Persona existe
     void testActualizarRegistroExistente(){
-        PersonaDAO dao = new PersonaDAO();
         Persona personaInicial = new Persona(1, "Ana","ana@ejemplo.com");
         dao.crear(personaInicial);
 
@@ -67,14 +67,12 @@ public class PersonaDAOTest {
 
     @Test
     void testActualizarRegistroInexistente() {
-        PersonaDAO dao = new PersonaDAO();
         Persona personaInexistente = new Persona(200,"No existe","no@existe");
         assertFalse(dao.actualizar(personaInexistente), "La persona no existe");
     }
 
     @Test
     void testActualizarRegistroPersonaNula() {
-        PersonaDAO dao = new PersonaDAO();
         assertThrows(IllegalArgumentException.class, ()-> dao.actualizar(null));
     }
 
@@ -83,7 +81,6 @@ public class PersonaDAOTest {
 
     @Test   //Precondición: persona existe
     void testEliminarRegistroExistente() {
-        PersonaDAO dao = new PersonaDAO();
         Persona persona = new Persona(1,"Luis","luis@ejemplo.com");
         dao.crear(persona);
 
@@ -92,13 +89,11 @@ public class PersonaDAOTest {
 
     @Test
     void testEliminarRegistroInexistente(){
-        PersonaDAO dao = new PersonaDAO();
         assertFalse(dao.eliminar(999),"El ID no existe en el registro");
     }
 
     @Test
     void testEliminarConIdInvalido() {
-        PersonaDAO dao = new PersonaDAO();
         assertThrows(IllegalArgumentException.class, () -> dao.eliminar(0));
     }
 
