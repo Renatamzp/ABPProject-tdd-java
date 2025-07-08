@@ -14,9 +14,12 @@ public class PersonaListRepository implements PersonaRepository {
 
     @Override
     public Optional<Persona> buscarPorId(int id) {
-        return personas.stream()
-                .filter(p -> p.getId() == id)
-                .findFirst();
+        return personas.stream().filter(p -> p.getId() == id).findFirst();
+    }
+
+    @Override
+    public Optional<Persona> buscarPorEmail(String email) {
+        return personas.stream().filter(p -> p.getEmail().equals(email)).findFirst();
     }
 
     @Override

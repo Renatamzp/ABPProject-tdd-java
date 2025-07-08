@@ -4,11 +4,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
 public class PersonaDAOTest {
     private PersonaDAO dao;
@@ -20,19 +22,40 @@ public class PersonaDAOTest {
         dao = new PersonaDAO(repository);
     }
 
+    //TEST CON MOCKITO
+
+    @Test
+    void crear_conMockito_debeValidarDuplicados() {
+        // Configurar mock - no existe id - no existe email.
+        PersonaRepository mockRepo = mock(PersonaRepository.class);
+        when(mockRepo.buscarPorId(1)).thenReturn(Optional.empty());
+        when(mockRepo.buscarPorEmail("a@b.com")).thenReturn(Optional.empty());
+        when(mockRepo.crear(any())).thenReturn(true);
+
+        // Ejecutar
+        PersonaDAO dao = new PersonaDAO(mockRepo);
+        boolean resultado = dao.crear(new Persona(1, "Ana", "a@b.com"));
+
+        // Verificar
+        assertTrue(resultado);
+        verify(mockRepo).buscarPorId(1);
+        verify(mockRepo).buscarPorEmail("a@b.com");
+        verify(mockRepo).crear(any());
+    }
+
     // TEST ASOCIADOS A NUEVO REGISTRO
 
    @Test
     void testCrearRegistroExitoso() {
         Persona persona = new Persona(1,"Renata", "r@example.com");
-        assertTrue(dao.crear(persona)); //Test pasa si se añade una persona y retorna TRUE ✅
+        assertTrue(dao.crear(persona)); //Test pasa si se añade una persona y retorna TRUE
     }
 
     @Test
 
     void  testCrearRegistroPersonaNula(){
         assertThrows(IllegalArgumentException.class, ()-> dao.crear(null));
-        //Test pasa si metodo maneja nulos y retorna una excepción ✅
+        //Test pasa si metodo maneja nulos y retorna una excepción
     }
 
     @Test
@@ -111,7 +134,7 @@ public class PersonaDAOTest {
 
         List<Persona> personas = dao.listar();
         assertEquals(1, personas.size());
-        assertEquals(persona, personas.get(0)); //Verificar qe la persona lista sea la misma q se creo
+        assertEquals(persona, personas.get(0));
     }
 
     @Test

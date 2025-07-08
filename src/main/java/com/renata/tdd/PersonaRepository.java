@@ -9,6 +9,8 @@ public interface PersonaRepository {
 
     Optional<Persona> buscarPorId(int id);
 
+    Optional<Persona> buscarPorEmail(String email);
+
     boolean actualizar(Persona persona);
 
     boolean eliminar(int id);

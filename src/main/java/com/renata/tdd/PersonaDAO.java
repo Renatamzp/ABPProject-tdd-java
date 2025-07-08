@@ -50,19 +50,16 @@ public class PersonaDAO {
     }
 
     private void validarDuplicados(Persona persona) {
-        repository.listar().stream()
-                .filter(p -> p.getId() == persona.getId() || p.getEmail().equals(persona.getEmail()))
-                .findFirst()
-                .ifPresent(p -> {
-                    throw new IllegalArgumentException(
-                            p.getId() == persona.getId()
-                                    ? "ID duplicado: " + persona.getId()
-                                    : "Email duplicado: " + persona.getEmail());
-                });
+        if (repository.buscarPorId(persona.getId()).isPresent()) {
+            throw new IllegalArgumentException("ID duplicado");
+        }
+        if (repository.buscarPorEmail(persona.getEmail()).isPresent()) {
+            throw new IllegalArgumentException("Email duplicado");
+        }
     }
 
     private void validarDuplicadosActualizacion(Persona persona) {
-        repository.listar().stream()  // Accede a los datos via repository
+        repository.listar().stream()
                 .filter(p -> p.getId() != persona.getId() && p.getEmail().equals(persona.getEmail()))
                 .findFirst()
                 .ifPresent(p -> {
