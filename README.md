@@ -45,15 +45,35 @@ Incluye pruebas unitarias, uso de mocks y medición de cobertura de código supe
 
 ## 📂 Estructura del proyecto
 
-src
-├── main
-│ └── java
-│ └── com.renata.tdd
-│ ├── Persona.java
-│ ├── PersonaDAO.java
-│ └── PersonaListRepository.java
-└── test
-└── java
-└── com.renata.tdd
-└── PersonaDAOTest.java
+proyecto-tdd/
+│
+├── src/
+│ ├── main/
+│ │ └── java/
+│ │ └── com/
+│ │ └── renata/
+│ │ └── tdd/
+│ │ ├── Persona.java
+│ │ ├── PersonaDAO.java
+│ │ ├── PersonaRepository.java
+│ │ └── PersonaListRepository.java
+│ │
+│ └── test/
+│ └── java/
+│ └── com/
+│ └── renata/
+│ └── tdd/
+│ └── PersonaDAOTest.java
+│
+├── target/
+│ ├── classes/
+│ ├── generated-sources/
+│ ├── generated-test-sources/
+│ ├── test-classes/
+│ └── site/
+│ └── jacoco/
+│ ├── index.html
+│ └── jacoco.xml
+│
+└── pom.xml
 
