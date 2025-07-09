@@ -45,8 +45,6 @@ Incluye pruebas unitarias, uso de mocks y medición de cobertura de código supe
 
 ## 📂 Estructura del proyecto
 
-# Estructura del Proyecto
-
 - proyecto-tdd/
   - src/
     - main/java/com/renata/tdd/
