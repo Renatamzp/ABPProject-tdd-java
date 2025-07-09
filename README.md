@@ -45,7 +45,7 @@ Incluye pruebas unitarias, uso de mocks y medición de cobertura de código supe
 
 ## 📂 Estructura del proyecto
 
-proyecto-tdd/# Estructura del Proyecto
+# Estructura del Proyecto
 
 - proyecto-tdd/
   - src/
